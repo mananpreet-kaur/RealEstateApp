@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import {Link} from 'react-router-dom';
 export default function SignUp() {
-  const{formData, setFormData} =useState({});
+  const [formData, setFormData] =useState({});
   const handleChange = (e)=>{
      setFormData({
         ...formData,
