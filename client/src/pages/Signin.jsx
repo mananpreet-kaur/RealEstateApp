@@ -1,11 +1,14 @@
 // import  React from 'react'
 import { useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { signInStart, signInSuccess,signInFailure } from '../redux/user/userSlice';
+
 export default function SignIn() {
   const [formData, setFormData] =useState({});
-  const [error, setError] = useState(null); // Declare error state
-  const [loading, setLoading] = useState(false); // Declare loading state
+  const {loading, error} =useSelector((state)=>state.user);
   const navigate = useNavigate(); // Initialize navigate hook
+  const dispatch =useDispatch();
   const handleChange = (e)=>{
      setFormData({
         ...formData,
@@ -16,8 +19,8 @@ export default function SignIn() {
   const handleSubmit = async (e)=>{
     e.preventDefault();
      try {
-      setLoading(true); // Set loading to true when starting the request
-      setError(null); // Clear previous errors
+      dispatch(signInStart());
+      
 
 const res =await fetch('/api/auth/signin' ,
 { 
@@ -34,24 +37,21 @@ const data = await res.json();
       // This check is good if your backend sends { success: false, message: "..." }
       // even for 200 OK responses (e.g., for specific validation errors).
       if (data.success === false) {
-        setLoading(false);
-        setError(data.message); // Use setError instead of StorageError
+        dispatch(signInFailure(data.message)); // Use setError instead of StorageError
         return;
       }
 
-      setLoading(false);
-      setError(null); // Clear any error if it was a success
+      dispatch(signInSuccess(data));// Clear any error if it was a success
       navigate('/'); 
 
     }catch (error) {
-      setLoading(false);
-      setError(error.message); // Catch network errors or issues with res.json()
+      dispatch(signInFailure(error.message));// Catch network errors or issues with res.json()
     }
   };
 
   return (
     <div className='p-3 max-w-lg mx-auto'>
-     <h1 className='text-3xl text-center font-semibold my-7'> Sign Up    </h1>
+     <h1 className='text-3xl text-center font-semibold my-7'> Sign In    </h1>
       <form  onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input type="email" placeholder='E-mail' className=' border p-3 rounded-lg' id='email' onChange={handleChange} />
         <input type="password" placeholder='Password' className=' border p-3 rounded-lg' id='password' onChange={handleChange} />
@@ -67,3 +67,4 @@ const data = await res.json();
     </div>
   )
 }
+ 

@@ -1,1 +1,9 @@
    https://youtu.be/VAaUy_Moivw?t=6028&feature=shared
+
+
+   redux tool kit
+   react hooks and state management
+   mongodb
+   api formations
+   cookies sessions etc
+   tailwind commands
