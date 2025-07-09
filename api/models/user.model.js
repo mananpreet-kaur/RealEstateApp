@@ -15,7 +15,11 @@ const userSchema= new mongoose.Schema({
         type: String,
         required: true,
        
-    }
+    },
+    avatar:{
+        type: String,
+        default: "https://cdn.vectorstock.com/i/1000v/92/16/default-profile-picture-avatar-user-icon-vector-46389216.jpg" ,
+    },
 },{timestamps: true});
 
 const User = mongoose.model('User',userSchema);

@@ -1,4 +1,12 @@
-   https://youtu.be/VAaUy_Moivw?t=6028&feature=shared
+https://www.youtube.com/watch?v=VAaUy_Moivw&list=PLt_IkXrqKgnZ6v83gXvFx5WgpuvIURYME&index=15&t=10801s
+
+username
+"test"
+email
+"test@gmail.com"
+password
+"manan"
+
 
 
    redux tool kit
