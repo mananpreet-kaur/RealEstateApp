@@ -15,3 +15,5 @@ password
    api formations
    cookies sessions etc
    tailwind commands
+
+   https://chatgpt.com/share/6880ec56-12a4-8000-a180-8ff0105dd876

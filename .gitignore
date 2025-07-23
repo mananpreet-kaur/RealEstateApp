@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 .env
 .public/where am i in the course.txt
+client/public/where am i in the course.txt
